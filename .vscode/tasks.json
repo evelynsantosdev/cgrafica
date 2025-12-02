@@ -3,22 +3,22 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++ build active file",
-            "command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
+            "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "draw.cpp",
                 "input.cpp",
                 "scene.cpp",
+                "texture.cpp",
+                "shader.cpp",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
+                "-lGLEW",
                 "-lGL",
                 "-lGLU",
-                "-lglut",
-                "-lfreeglut",
-                "-lopengl32",
-                "-lglu32"
+                "-lglut"
             ],
             "options": {
                 "cwd": "${fileDirname}"

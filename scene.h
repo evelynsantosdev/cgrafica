@@ -3,7 +3,7 @@
 
 extern float anguloPiramide;
 extern float anguloEsfera;
-extern float anguloRodas;
+extern float tempoEsfera;
 
 extern float camX, camY, camZ;
 extern float yaw, pitch;
@@ -30,7 +30,5 @@ void atualizaCentroJanela(int w, int h);
 void desenhaChao(void);
 void desenhaTorresELosangos(void);
 void desenhaPiramideDegraus(void);
-void desenhaBicicleta(void);
-void desenhaRodaComRaios(float raio, float espessura, int numRaios);
 
 #endif

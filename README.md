@@ -4,7 +4,7 @@ Este projeto é uma evolução de um motor simples em OpenGL, inspirado em jogos
 
 O objetivo principal foi expandir o sistema de tiles para suportar múltiplos tipos de chão, paredes diferentes e teto opcional, mantendo a integração com o fluxo original do projeto.
 
-## Objetivos do Trabalho
+# Objetivos do Trabalho
 **Evoluir o sistema de tiles para suportar:**
 -  Pelo menos **2 tipos de parede**, cada uma com sua própria textura
 -  Pelo menos **2 tipos de chão**, cada um com sua própria textura
@@ -13,23 +13,23 @@ O objetivo principal foi expandir o sistema de tiles para suportar múltiplos ti
 -  Integração com `MapLoader` e `drawLevel`
 -  Código compilando e executando normalmente
 
-## Funcionalidades Implementadas
+# Funcionalidades Implementadas
 
-### Pisos
+# Pisos
 - Dois tipos de chão diferentes (`0` e `3`)
 - Cada tipo utiliza uma textura distinta
 
-### Paredes
+# Paredes
 - Dois (ou mais) tipos de paredes (`1`, `2`, `Y`)
 - Cada parede pode usar uma textura própria
 
-### Teto Opcional
+# Teto 
 - Tiles marcados com `T` possuem teto
 - Áreas sem `T` permanecem abertas
 - O teto é renderizado com uma textura específica
 
 
-## Estrutura do Sistema
+# Estrutura do Sistema
 
 - **MapLoader**  
   Responsável por carregar o mapa a partir de um arquivo `.txt`.
@@ -44,7 +44,7 @@ O objetivo principal foi expandir o sistema de tiles para suportar múltiplos ti
 Toda a lógica foi integrada ao fluxo original do projeto, sem quebrar funcionalidades existentes.
 
 
-## Execução
+# Execução
 
 O projeto utiliza:
 
@@ -56,7 +56,7 @@ O projeto utiliza:
 
 Após a compilação, o cenário é renderizado automaticamente com base no mapa carregado.
 
-## Conclusão
+# Conclusão
 
 O sistema de tiles foi expandido com sucesso, permitindo maior variedade visual e estrutural no cenário, atendendo completamente aos requisitos da atividade proposta.
 

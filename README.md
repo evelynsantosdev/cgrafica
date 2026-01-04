@@ -62,7 +62,6 @@ O sistema de tiles foi expandido com sucesso, permitindo maior variedade visual 
 
 O uso de diferentes texturas e a possibilidade de teto opcional tornam o mapa mais rico e flexível para futuras expansões.
 
----
 
 ## Autor
 

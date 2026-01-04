@@ -1,7 +1,10 @@
+#include <iostream>
 #include <GL/glew.h>
-#include <GL/glut.h>
-#include <math.h>
+#include <GL/freeglut.h>
+#include <GL/gl.h>
+#include <cmath>
 #include <cstdio>
+
 #include "scene.h"
 #include "input.h"
 #include "texture.h"
@@ -10,22 +13,33 @@
 #include "drawlevel.h"
 #include "utils/levelmetrics.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 static MapLoader gMap;
 
 float anguloPiramide = 0.0f;
-float anguloEsfera = 0.0f;
-float tempoEsfera = 0.0f;
+float anguloEsfera   = 0.0f;
+float tempoEsfera    = 0.0f;
 
 int fps = 0;
 int frameCount = 0;
 int previousTime = 0;
 
-GLuint texChao;
-GLuint texParede;
 GLuint texSangue;
 GLuint texLava;
 GLuint progSangue;
 GLuint progLava;
+
+GLuint texChao1;
+GLuint texChao2;
+GLuint texTeto;
+
+GLuint texParede1;
+GLuint texParede2;
+
+
 
 void display()
 {
@@ -33,7 +47,7 @@ void display()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    float radYaw = yaw * M_PI / 180.0f;
+    float radYaw   = yaw   * M_PI / 180.0f;
     float radPitch = pitch * M_PI / 180.0f;
 
     float dirX = cosf(radPitch) * sinf(radYaw);
@@ -43,16 +57,16 @@ void display()
     gluLookAt(
         camX, camY, camZ,
         camX + dirX, camY + dirY, camZ + dirZ,
-        0.0f, 1.0f, 0.0f);
+        0.0f, 1.0f, 0.0f
+    );
 
     drawLevel(gMap);
-
     glutSwapBuffers();
 
     frameCount++;
     int currentTime = glutGet(GLUT_ELAPSED_TIME);
 
-    if (currentTime - previousTime > 1000) // passou 1 segundo
+    if (currentTime - previousTime > 1000)
     {
         fps = frameCount;
         frameCount = 0;
@@ -66,8 +80,7 @@ void display()
 
 void reshape(int w, int h)
 {
-    if (h == 0)
-        h = 1;
+    if (h == 0) h = 1;
     float a = (float)w / (float)h;
 
     glViewport(0, 0, w, h);
@@ -77,56 +90,59 @@ void reshape(int w, int h)
     gluPerspective(60.0f, a, 1.0f, 100.0f);
 
     glMatrixMode(GL_MODELVIEW);
-
-    // informa ao módulo de input onde é o centro da janela
     atualizaCentroJanela(w, h);
 }
 
-void timer(int v)
+void timer(int)
 {
     anguloPiramide += 1.5f;
-    if (anguloPiramide >= 360.0f)
-        anguloPiramide -= 360.0f;
-
-    anguloEsfera += 1.0f;
-    if (anguloEsfera >= 360.0f)
-        anguloEsfera -= 360.0f;
-
-    tempoEsfera += 0.016f;
+    anguloEsfera   += 1.0f;
+    tempoEsfera    += 0.016f;
 
     atualizaMovimento();
 
     glutPostRedisplay();
-    glutTimerFunc(16, timer, 0); // ~60 FPS
+    glutTimerFunc(16, timer, 0);
 }
 
 int main(int argc, char **argv)
 {
+    std::cout << "OpenGL em C++ funcionando!" << std::endl;
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
+    
     glutInitWindowSize(janelaW, janelaH);
     glutCreateWindow("Um dia vai ser DOOM");
 
     GLenum err = glewInit();
     if (err != GLEW_OK)
     {
-        printf("Erro GLEW: %s\n", glewGetErrorString(err));
+        std::cout << "Erro GLEW: "
+                  << glewGetErrorString(err) << std::endl;
         return 1;
     }
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
 
-    // carregando texturas
-    texChao = carregaTextura("assets/181.png");
-    texParede = carregaTextura("assets/091.png");
-    texSangue = carregaTextura("assets/016.png");
-    texLava = carregaTextura("assets/179.png");
+    // Chão
+    texChao1 = carregaTextura("assets/chao1.png");
+    texChao2 = carregaTextura("assets/chao2.png");
 
-    // cria o shader
+    // Paredes
+    texParede1 = carregaTextura("assets/parede1.png");
+    texParede2 = carregaTextura("assets/parede2.png");
+
+    texSangue = carregaTextura("assets/016.png");
+    texLava   = carregaTextura("assets/179.png");
+
+    // Teto
+    texTeto   = carregaTextura("assets/teto.png");
+
     progSangue = criaShader("shaders/blood.vert", "shaders/blood.frag");
-    progLava = criaShader("shaders/lava.vert", "shaders/lava.frag");
+    progLava   = criaShader("shaders/lava.vert", "shaders/lava.frag");
 
     glClearColor(0.05f, 0.05f, 0.1f, 1.0f);
 
@@ -136,12 +152,11 @@ int main(int argc, char **argv)
     glutKeyboardUpFunc(keyboardUp);
     glutPassiveMotionFunc(mouseMotion);
 
-    glutSetCursor(GLUT_CURSOR_NONE); // esconde o cursor
-
+    glutSetCursor(GLUT_CURSOR_NONE);
     glutTimerFunc(0, timer, 0);
 
-    gMap.load("maps/map1.txt");
-    LevelMetrics m = LevelMetrics::fromMap(gMap, 4.0f); 
+    gMap.load("maps/map2.txt");
+    LevelMetrics m = LevelMetrics::fromMap(gMap, 4.0f);
     m.spawnPos(gMap, camX, camZ);
     camY = 1.5f;
 

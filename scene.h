@@ -27,6 +27,8 @@ extern bool keyD;
 void altFullScreen();
 void atualizaCentroJanela(int w, int h);
 
+extern GLuint texTeto;
+
 void desenhaChao(void);
 void desenhaTorresELosangos(void);
 void desenhaPiramideDegraus(void);

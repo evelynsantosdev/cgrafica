@@ -22,6 +22,8 @@ bool keyD = false;
 
 bool fullScreen = false;
 
+
+
 void atualizaCentroJanela(int w, int h)
 {
     centerX = w / 2;

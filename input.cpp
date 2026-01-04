@@ -1,7 +1,11 @@
-#include <GL/glut.h>
-#include <math.h>
+#include <cmath>
+#include <GL/freeglut.h>
 #include "scene.h"
+#include "input.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 void keyboard(unsigned char key, int x, int y)
 {
     switch (key)

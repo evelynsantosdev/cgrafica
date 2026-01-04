@@ -1,121 +1,79 @@
-# ODEIOS
-- ODEIO DÁRIO
-- ODEIO HELOYSA
-- ODEIO AUZIER
-- ODEIO KELVIN
+# Sistema de Tiles – OpenGL em C++
 
-# DoomLike OpenGL Project
+Este projeto é uma evolução de um motor simples em OpenGL, inspirado em jogos estilo DOOM, com foco na renderização de cenários baseados em tiles carregados a partir de arquivos `.txt`.
 
-Este projeto utiliza **OpenGL (pipeline fixo + GLSL 1.20)** para renderização,  
-**GLUT** para gerenciamento de janela/entrada e **GLEW** para carregar funções modernas  
-como shaders, VBOs e extensões necessárias.
-
-## 🎥 Demonstração
-https://github.com/user-attachments/assets/a54eda50-ec44-4332-96ef-c4700e5cf88f
+O objetivo principal foi expandir o sistema de tiles para suportar múltiplos tipos de chão, paredes diferentes e teto opcional, mantendo a integração com o fluxo original do projeto.
 
 ---
 
-## 📦 Dependências
-
-Certifique-se de ter instalados os seguintes pacotes no seu sistema Linux:
-
-### 🛠️ Compilação
-- `g++`
-- `make`
-
-### 🖥️ Bibliotecas OpenGL
-- `freeglut`
-- `glew` (NOVA BIBLIOTECA QUE PRECISA INSTALAR)
-- `mesa`
-- `glu`
-
-### 🖼️ Carregamento de Texturas  
-- `stb_image.h` (arquivo de cabeçalho incluso no projeto)
+## Objetivos do Trabalho
+**Evoluir o sistema de tiles para suportar:**
+-  Pelo menos **2 tipos de parede**, cada uma com sua própria textura
+-  Pelo menos **2 tipos de chão**, cada um com sua própria textura
+-  **Teto opcional**, permitindo áreas cobertas e áreas abertas
+-  Carregamento do mapa a partir de arquivo `.txt`
+-  Integração com `MapLoader` e `drawLevel`
+-  Código compilando e executando normalmente
 
 ---
 
-## 🚀 Compilar e Executar
+## Funcionalidades Implementadas
 
-Use o comando abaixo para compilar o projeto e executá-lo imediatamente:
+### Pisos
+- Dois tipos de chão diferentes (`0` e `3`)
+- Cada tipo utiliza uma textura distinta
 
-### 🐧 Linux
-```bash
-g++ main.cpp draw.cpp input.cpp scene.cpp texture.cpp shader.cpp \
-    -o DoomLike \
-    -lGLEW -lGL -lGLU -lglut && ./DoomLike
-```
+### Paredes
+- Dois (ou mais) tipos de paredes (`1`, `2`, `Y`)
+- Cada parede pode usar uma textura própria
 
-### 🪟 Windows
-```bash
-g++ main.cpp draw.cpp input.cpp scene.cpp texture.cpp shader.cpp ^
-    -o DoomLike.exe ^
-    -lglew32 -lfreeglut -lopengl32 -lglu32 && DoomLike.exe
-```
-## 🎮 Como Jogar
-
-A cena pode ser explorada em primeira pessoa, com movimentação típica de FPS clássico.
+### Teto Opcional
+- Tiles marcados com `T` possuem teto
+- Áreas sem `T` permanecem abertas
+- O teto é renderizado com uma textura específica
 
 ---
 
-## ⌨️ Controles
+## Estrutura do Sistema
 
-### 🧭 Movimento
-| Tecla | Ação |
-|-------|------|
-| **W** | Avançar |
-| **A** | Mover para a esquerda (strafe) |
-| **S** | Recuar |
-| **D** | Mover para a direita (strafe) |
+- **MapLoader**  
+  Responsável por carregar o mapa a partir de um arquivo `.txt`.
 
----
+- **drawLevel**  
+  Interpreta os caracteres do mapa e desenha:
+  - chão
+  - paredes
+  - teto (quando aplicável)
+  - tiles especiais
 
-### 🖱️ Visão
-| Ação | Resultado |
-|------|-----------|
-| **Mover o mouse** | Olhar em qualquer direção |
+Toda a lógica foi integrada ao fluxo original do projeto, sem quebrar funcionalidades existentes.
 
 ---
 
-### 🪟 Janelas e Sistema
-| Tecla | Ação |
-|-------|------|
-| **Alt + Enter** | Alterna entre tela cheia e modo janela |
-| **ESC** | Encerra o programa |
+## Execução
+
+O projeto utiliza:
+
+- OpenGL
+- FreeGLUT
+- GLEW
+- MSYS2 (MinGW64)
+- C++17
+
+Após a compilação, o cenário é renderizado automaticamente com base no mapa carregado.
 
 ---
 
-## 🗺️ Criando o Mapa (Matriz em `.txt`)
+## Conclusão
 
-O mapa do jogo é definido por um arquivo **texto (ASCII)**, onde **cada caractere representa um tile** do mundo.  
-Cada **linha do arquivo** corresponde a uma linha do mapa, e **todas as linhas devem ter o mesmo comprimento** (mesma quantidade de colunas).
+O sistema de tiles foi expandido com sucesso, permitindo maior variedade visual e estrutural no cenário, atendendo completamente aos requisitos da atividade proposta.
 
----
-
-### ✅ Regras importantes
-- O arquivo deve ser salvo como `.txt`
-- Cada linha representa uma “fileira” do mapa
-- Todas as linhas precisam ter o mesmo tamanho
-- Use **apenas os caracteres da legenda abaixo**
-- Deve existir **exatamente um `9`** (posição inicial do jogador)
+O uso de diferentes texturas e a possibilidade de teto opcional tornam o mapa mais rico e flexível para futuras expansões.
 
 ---
 
-### 🧩 Legenda do mapa (originais)
-| Caractere | Significado |
-|----------|-------------|
-| `1` | Parede |
-| `0` | Chão normal (piso) |
-| `L` | Lava (tile com shader de calor) |
-| `B` | Sangue (tile com shader de distorção) |
-| `9` | Spawn do jogador *(o loader converte para `0` após ler)* |
+## Autor
 
----
+Projeto desenvolvido como atividade acadêmica para a disciplina de Computação Gráfica.
 
-### 📌 Exemplo simples de mapa
-```txt
-1111111111
-1000000001
-10L0000B01
-1000090001
-1000000001
-1111111111
+

@@ -1,33 +1,22 @@
-#  Projeto OpenGL – Cena 3D
+# Ambiente 3D em OpenGL com Texturas e Shader
 
-Este projeto faz parte do desenvolvimento incremental de uma cena 3D utilizando **OpenGL em C++**, com foco na modelagem de objetos, aplicação de texturas e interação em primeira pessoa.
+Este projeto apresenta uma modificação do código base em C++ com OpenGL, com foco na aplicação de texturas personalizadas e na adição de um shader em elementos animados do cenário.
 
----
+As texturas utilizadas seguem o estilo clássico do jogo DOOM, substituindo as texturas originais do projeto.
 
-##  Descrição da Implementação
+# Modificações Realizadas
 
-Nesta etapa do projeto, foi implementada a **modelagem de uma bicicleta**, posicionada de forma escorada em uma das torres do cenário.
+- Aplicação de texturas próprias no cenário;
+- Uso de shader nos losangos giratórios, criando efeito visual dinâmico;
+- Manutenção do carregamento de mapas via arquivo .txt;
+- Integração total com a estrutura original do projeto.
 
-A bicicleta foi construída a partir de **primitivas geométricas** e recebeu **texturas aplicadas corretamente**, demonstrando o uso do sistema de carregamento e mapeamento de texturas no OpenGL.
+# Organização
 
-As **rodas da bicicleta possuem animação**, girando continuamente durante a execução do programa, evidenciando o uso de transformações e controle de tempo na cena.
+- O branch main contém o projeto completo.
+- Este trabalho foi desenvolvido em um novo branch, dedicado às modificações de texturas e shader.
+- Novos conteúdos serão adicionados em branches separados.
 
----
+# Contexto
 
-##  Organização do Repositório
-
-- **Branch `main`**  
-  Contém o projeto completo e funcional.
-
-- **Branch `texturas`**  
-  Contém as modificações realizadas nesta etapa, incluindo a modelagem da bicicleta e a aplicação de texturas.
-
-A partir deste ponto, cada novo conteúdo do projeto será desenvolvido em um **branch separado**, facilitando o acompanhamento da evolução do código.
-
----
-
-## Execução e Interação
-
-A cena pode ser explorada em **primeira pessoa**, com movimentação típica de jogos FPS clássicos, permitindo observar a bicicleta e os demais elementos do cenário sob diferentes ângulos.
-
-Este projeto foi desenvolvido no contexto da disciplina de **Computação Gráfica**, com foco no uso de OpenGL e conceitos básicos de renderização 3D.
+Projeto desenvolvido para a disciplina de Computação Gráfica, com foco em texturização e uso de shaders em OpenGL.

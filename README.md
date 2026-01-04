@@ -1,83 +1,31 @@
-# ODEIOS
-- ODEIO DÁRIO
-- ODEIO HELOYSA
-- ODEIO AUZIER
-- ODEIO KELVIN
+#  Projeto OpenGL – Cena 3D
 
-# DoomLike OpenGL Project
-
-Este projeto utiliza **OpenGL (pipeline fixo + GLSL 1.20)** para renderização,  
-**GLUT** para gerenciamento de janela/entrada e **GLEW** para carregar funções modernas  
-como shaders, VBOs e extensões necessárias.
-
-## 🎥 Demonstração
-https://github.com/user-attachments/assets/e42eb186-d471-4aed-8c69-9c8bc67b3ab3
+Este projeto faz parte do desenvolvimento incremental de uma cena 3D utilizando **OpenGL em C++**, com foco na modelagem de objetos, aplicação de texturas e interação em primeira pessoa.
 
 ---
 
-## 📦 Dependências
+##  Descrição da Implementação
 
-Certifique-se de ter instalados os seguintes pacotes no seu sistema Linux:
+Nesta etapa do projeto, foi implementada a **modelagem de uma bicicleta**, posicionada de forma escorada em uma das torres do cenário.
 
-### 🛠️ Compilação
-- `g++`
-- `make`
+A bicicleta foi construída a partir de **primitivas geométricas** e recebeu **texturas aplicadas corretamente**, demonstrando o uso do sistema de carregamento e mapeamento de texturas no OpenGL.
 
-### 🖥️ Bibliotecas OpenGL
-- `freeglut`
-- `glew` (NOVA BIBLIOTECA QUE PRECISA INSTALAR)
-- `mesa`
-- `glu`
-
-### 🖼️ Carregamento de Texturas  
-- `stb_image.h` (arquivo de cabeçalho incluso no projeto)
+As **rodas da bicicleta possuem animação**, girando continuamente durante a execução do programa, evidenciando o uso de transformações e controle de tempo na cena.
 
 ---
 
-## 🚀 Compilar e Executar
+##  Organização do Repositório
 
-Use o comando abaixo para compilar o projeto e executá-lo imediatamente:
+- **Branch `main`**  
+  Contém o projeto completo e funcional.
 
-### 🐧 Linux
-```bash
-g++ main.cpp draw.cpp input.cpp scene.cpp texture.cpp shader.cpp \
-    -o DoomLike \
-    -lGLEW -lGL -lGLU -lglut && ./DoomLike
-```
+- **Branch `texturas`**  
+  Contém as modificações realizadas nesta etapa, incluindo a modelagem da bicicleta e a aplicação de texturas.
 
-### 🪟 Windows
-```bash
-g++ main.cpp draw.cpp input.cpp scene.cpp texture.cpp shader.cpp ^
-    -o DoomLike.exe ^
-    -lglew32 -lfreeglut -lopengl32 -lglu32 && DoomLike.exe
-```
-## 🎮 Como Jogar
-
-A cena pode ser explorada em primeira pessoa, com movimentação típica de FPS clássico.
+A partir deste ponto, cada novo conteúdo do projeto será desenvolvido em um **branch separado**, facilitando o acompanhamento da evolução do código.
 
 ---
 
-## ⌨️ Controles
+## Execução e Interação
 
-### 🧭 Movimento
-| Tecla | Ação |
-|-------|------|
-| **W** | Avançar |
-| **A** | Mover para a esquerda (strafe) |
-| **S** | Recuar |
-| **D** | Mover para a direita (strafe) |
-
----
-
-### 🖱️ Visão
-| Ação | Resultado |
-|------|-----------|
-| **Mover o mouse** | Olhar em qualquer direção |
-
----
-
-### 🪟 Janelas e Sistema
-| Tecla | Ação |
-|-------|------|
-| **Alt + Enter** | Alterna entre tela cheia e modo janela |
-| **ESC** | Encerra o programa |
+A cena pode ser explorada em **primeira pessoa**, com movimentação típica de jogos FPS clássicos, permitindo observar a bicicleta e os demais elementos do cenário sob diferentes ângulos.

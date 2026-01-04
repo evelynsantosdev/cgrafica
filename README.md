@@ -29,3 +29,4 @@ A partir deste ponto, cada novo conteúdo do projeto será desenvolvido em um **
 ## Execução e Interação
 
 A cena pode ser explorada em **primeira pessoa**, com movimentação típica de jogos FPS clássicos, permitindo observar a bicicleta e os demais elementos do cenário sob diferentes ângulos.
+Este projeto foi desenvolvido no contexto da disciplina de **Computação Gráfica**, com foco no uso de OpenGL e conceitos básicos de renderização 3D.

@@ -42,3 +42,25 @@ bool MapLoader::load(const char* filename) {
     file.close();
     return (height > 0 && width > 0);
 }
+
+//bool MapLoader::isWall(int x, int z) const//
+//{
+    //if (x < 0 || z < 0 || x >= width || z >= height)
+      //  return false;
+
+    //char c = mapData[z][x];
+    //return (c == '1' || c == '2');
+//}
+
+//bool MapLoader::isExteriorFace(int x, int z, int dx, int dz) const
+//{
+    //int nx = x + dx;
+    //int nz = z + dz;
+
+    // fora do mapa = exterior
+   // if (nx < 0 || nz < 0 || nx >= width || nz >= height)
+     //   return true;
+
+    // se o vizinho não é parede, é exterior
+    //return !isWall(nx, nz);
+//}

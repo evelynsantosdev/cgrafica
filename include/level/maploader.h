@@ -7,14 +7,14 @@
 class MapLoader {
 public:
     bool load(const char* filename);
-
     const std::vector<std::string>& data() const { return mapData; }
-
     int getWidth() const { return width; }
     int getHeight() const { return height; }
-
     float getPlayerStartX() const { return playerStartX; }
     float getPlayerStartZ() const { return playerStartZ; }
+
+    bool isWall(int x, int z) const;
+    bool isExteriorFace(int x, int z, int dx, int dz) const;
 
 private:
     std::vector<std::string> mapData;

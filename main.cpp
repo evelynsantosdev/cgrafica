@@ -1,7 +1,6 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <cstdio>
-
 #include "core/app.h"
 #include "core/window.h"
 #include "core/game.h"
